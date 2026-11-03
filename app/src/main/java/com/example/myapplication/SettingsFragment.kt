@@ -15,6 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import java.util.Locale
+import com.google.firebase.auth.FirebaseAuth
 
 class SettingsFragment : Fragment() {
     override fun onCreateView(
@@ -70,7 +71,7 @@ class SettingsFragment : Fragment() {
         }
 
         // Load dynamic session information
-        val savedEmail = sharedPref.getString("user_email", "") ?: ""
+        val savedEmail = FirebaseAuth.getInstance().currentUser?.email.orEmpty()
         
         if (savedEmail.isNotEmpty()) {
             // Extract display name from email prefix
@@ -116,7 +117,8 @@ class SettingsFragment : Fragment() {
         }
 
         btnSignOut.setOnClickListener {
-            // Clear current authentication session flags
+            FirebaseAuth.getInstance().signOut()
+            // Clear legacy prototype session flags
             with (sharedPref.edit()) {
                 putBoolean("is_logged_in", false)
                 putString("user_email", "")
