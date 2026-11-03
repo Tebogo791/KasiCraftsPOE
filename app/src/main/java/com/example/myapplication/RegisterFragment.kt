@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterFragment : Fragment() {
     private val auth by lazy { FirebaseAuth.getInstance() }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         inflater.inflate(R.layout.fragment_register, container, false)
 
@@ -42,24 +44,34 @@ class RegisterFragment : Fragment() {
                     Toast.makeText(requireContext(), task.exception?.localizedMessage ?: "Registration failed", Toast.LENGTH_LONG).show()
                     return@addOnCompleteListener
                 }
-                val user = auth.currentUser ?: return@addOnCompleteListener
+
+                val user = auth.currentUser
+                if (user == null) {
+                    registerButton.isEnabled = true
+                    Toast.makeText(requireContext(), "Account created, but session unavailable. Restart and sign in.", Toast.LENGTH_LONG).show()
+                    return@addOnCompleteListener
+                }
+
+                // Save profile independently: Firestore may wait for a network connection.
                 val profile = mapOf("name" to name, "email" to email, "role" to role, "loyaltyPoints" to 0)
                 FirebaseFirestore.getInstance().collection("users").document(user.uid)
-                    .set(profile).addOnCompleteListener { saveTask ->
-                        if (!isAdded) return@addOnCompleteListener
-                        user.sendEmailVerification().addOnCompleteListener { verificationTask ->
-                            if (!isAdded) return@addOnCompleteListener
-                            auth.signOut()
-                            registerButton.isEnabled = true
-                            val message = when {
-                                !saveTask.isSuccessful -> "Account created, but profile could not be saved. Check Firestore rules."
-                                !verificationTask.isSuccessful -> "Account created, but verification email could not be sent."
-                                else -> "Account created! Check your email to verify it before logging in."
-                            }
-                            Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
-                            findNavController().popBackStack()
-                        }
+                    .set(profile).addOnFailureListener { exception ->
+                        Log.e("KasiCraftsRegistration", "Profile save failed", exception)
                     }
+
+                // Do not block verification on Firestore completion.
+                user.sendEmailVerification().addOnCompleteListener { verificationTask ->
+                    if (!isAdded) return@addOnCompleteListener
+                    registerButton.isEnabled = true
+                    if (verificationTask.isSuccessful) {
+                        auth.signOut()
+                        Toast.makeText(requireContext(), "Account created! Check your inbox and verify your email before logging in.", Toast.LENGTH_LONG).show()
+                        findNavController().popBackStack()
+                    } else {
+                        Log.e("KasiCraftsRegistration", "Verification email failed", verificationTask.exception)
+                        Toast.makeText(requireContext(), "Account created, but verification email failed: ${verificationTask.exception?.localizedMessage}", Toast.LENGTH_LONG).show()
+                    }
+                }
             }
         }
     }
