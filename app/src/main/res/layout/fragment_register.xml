@@ -13,11 +13,11 @@
             android:text="Join KasiCrafts" android:textSize="28sp" android:textStyle="bold"
             android:textColor="#FFFFFF" android:layout_marginBottom="24dp" />
         <EditText android:id="@+id/etRegisterName" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:hint="Full name"
+            android:layout_height="wrap_content" android:hint="@string/full_name"
             android:inputType="textPersonName" android:textColor="#FFFFFF"
             android:textColorHint="#A0A0AB" />
         <EditText android:id="@+id/etRegisterEmail" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:hint="Email"
+            android:layout_height="wrap_content" android:hint="@string/hint_email"
             android:inputType="textEmailAddress" android:textColor="#FFFFFF"
             android:textColorHint="#A0A0AB" />
         <EditText android:id="@+id/etRegisterPassword" android:layout_width="match_parent"
@@ -25,19 +25,19 @@
             android:inputType="textPassword" android:textColor="#FFFFFF"
             android:textColorHint="#A0A0AB" />
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="Register as" android:textColor="#FFFFFF" android:layout_marginTop="16dp" />
+            android:text="@string/register_as" android:textColor="#FFFFFF" android:layout_marginTop="16dp" />
         <RadioGroup android:id="@+id/rgRole" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:orientation="horizontal"
             android:checkedButton="@id/rbBuyer">
             <RadioButton android:id="@+id/rbBuyer" android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:text="Buyer"
+                android:layout_height="wrap_content" android:text="@string/buyer"
                 android:textColor="#FFFFFF" android:buttonTint="#FF6D00" />
             <RadioButton android:id="@+id/rbSeller" android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:text="Seller"
+                android:layout_height="wrap_content" android:text="@string/seller"
                 android:textColor="#FFFFFF" android:buttonTint="#FF6D00" />
         </RadioGroup>
         <Button android:id="@+id/btnCreateAccount" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:text="Create Account"
+            android:layout_height="wrap_content" android:text="@string/create_account"
             android:backgroundTint="#FF6D00" android:textColor="#FFFFFF"
             android:layout_marginTop="24dp" />
     </LinearLayout>
