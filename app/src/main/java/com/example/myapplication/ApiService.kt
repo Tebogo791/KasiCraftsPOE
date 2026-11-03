@@ -12,7 +12,8 @@ data class Product(
     val price: String = "R 0.00",
     val sellerName: String = "Local Artisan",
     val imageUrl: String = "https://picsum.photos/200",
-    val imageResId: Int? = null
+    val imageResId: Int? = null,
+    val sellerArea: String = ""
 )
 
 // API Interface
