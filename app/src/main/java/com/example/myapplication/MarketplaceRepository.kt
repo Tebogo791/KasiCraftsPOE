@@ -16,17 +16,18 @@ object MarketplaceRepository {
                 return@addSnapshotListener
             }
             if (snapshot == null) return@addSnapshotListener
-            val products = snapshot.documents.mapIndexedNotNull { index, doc ->
-                val title = doc.getString("title") ?: return@mapIndexedNotNull null
+            val products = snapshot.documents.mapNotNull { doc ->
+                val title = doc.getString("title") ?: return@mapNotNull null
                 val rawPrice = doc.getString("price") ?: doc.get("price")?.toString() ?: "0"
                 Product(
-                    id = index + 1,
+                    id = doc.id.hashCode(),
                     title = title,
                     body = doc.getString("description") ?: "",
                     price = if (rawPrice.startsWith("R")) rawPrice else "R $rawPrice",
                     sellerName = doc.getString("sellerName") ?: "Local Artisan",
                     imageUrl = doc.getString("imageUrl") ?: "",
-                    sellerArea = doc.getString("sellerArea") ?: ""
+                    sellerArea = doc.getString("sellerArea") ?: "",
+                    sellerUid = doc.getString("sellerUid") ?: ""
                 )
             }
             onProducts(products, snapshot.metadata.isFromCache)
