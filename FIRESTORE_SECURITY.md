@@ -32,3 +32,9 @@ This command replaces the project's deployed Firestore rules. Back up and review
 ## Backend work still required
 
 A trusted backend (for example, Cloud Functions using the Admin SDK) must validate actual order completion, award loyalty points idempotently using a unique order ID, and administer artisan verification. Do not let the Android client set these fields. The client currently has no genuine payment or completed-order verification.
+
+## Loyalty Cloud Function (not deployed)
+
+The `functions/index.js` trigger watches server-written `orders/{orderId}` transitions to `status: "completed"`. It grants one point per full R10 of `totalCents` (capped at 1,000 points) and uses a transaction with `loyaltyAwards/{orderId}` to prevent duplicate awards. Order creation, payment verification, and fulfillment confirmation are **not** implemented. Never mark an order completed from untrusted client input.
+
+Before deploying, install dependencies in `functions/`, run local emulator tests for retries and concurrent invocations, and confirm the Firebase project's billing plan supports Functions. A Functions deployment is separate from the Firestore rules deployment. No deployment has been performed by these commits.
