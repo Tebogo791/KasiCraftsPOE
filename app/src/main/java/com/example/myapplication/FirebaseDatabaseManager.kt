@@ -49,11 +49,12 @@ object FirebaseDatabaseManager {
     /**
      * Pushes a local craft product addition to the database
      */
-    fun uploadCraftProduct(title: String, price: String, seller: String) {
+    fun uploadCraftProduct(title: String, price: String, seller: String, area: String = "") {
         val productData = mapOf(
             "title" to title,
             "price" to price,
             "sellerName" to seller,
+            "sellerArea" to area,
             "timestamp" to System.currentTimeMillis()
         )
 
