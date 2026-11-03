@@ -35,18 +35,26 @@ class SellFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            // Sync item details to online database live
+            btnSubmit.isEnabled = false
             try {
-                FirebaseDatabaseManager.uploadCraftProduct(title, price, seller, etArea.text.toString().trim())
-                Toast.makeText(requireContext(), "Product synced to Cloud Database!", Toast.LENGTH_LONG).show()
-                
-                // Clear out inputs upon success
-                etTitle.text.clear()
-                etPrice.text.clear()
-                etSeller.text.clear()
-                etArea.text.clear()
-            } catch (e: Exception) {
-                Toast.makeText(requireContext(), "Upload triggered successfully", Toast.LENGTH_SHORT).show()
+                FirebaseDatabaseManager.uploadCraftProduct(
+                    title, price, seller, etArea.text.toString().trim()
+                ).addOnSuccessListener {
+                    if (!isAdded) return@addOnSuccessListener
+                    btnSubmit.isEnabled = true
+                    Toast.makeText(requireContext(), "Craft uploaded successfully!", Toast.LENGTH_LONG).show()
+                    etTitle.text.clear()
+                    etPrice.text.clear()
+                    etSeller.text.clear()
+                    etArea.text.clear()
+                }.addOnFailureListener { error ->
+                    if (!isAdded) return@addOnFailureListener
+                    btnSubmit.isEnabled = true
+                    Toast.makeText(requireContext(), "Upload failed: ${error.localizedMessage}", Toast.LENGTH_LONG).show()
+                }
+            } catch (error: Exception) {
+                btnSubmit.isEnabled = true
+                Toast.makeText(requireContext(), error.localizedMessage ?: "Upload failed", Toast.LENGTH_LONG).show()
             }
         }
     }
