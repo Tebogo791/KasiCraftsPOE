@@ -121,12 +121,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="450 / 1000 points to Silver Member"
+                    android:id="@+id/tvLoyaltyPoints"
+                    android:text="Loading loyalty points..."
                     android:textColor="#888888"
                     android:textSize="12sp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/language_label" android:textColor="#FFFFFF" android:layout_marginBottom="8dp" />
+        <Spinner android:id="@+id/spinnerLanguage" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginBottom="20dp" />
         <!-- Toggle Switches Preferences Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
