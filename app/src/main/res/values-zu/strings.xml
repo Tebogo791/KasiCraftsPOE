@@ -1,0 +1,18 @@
+<resources>
+<string name="app_name">KasiCrafts</string>
+<string name="menu_home">Ikhaya</string>
+<string name="menu_settings">Izilungiselelo</string>
+<string name="kasi_crafts_logo">Ilogo yeKasiCrafts</string>
+<string name="hint_email">I-imeyili</string>
+<string name="hint_password">Iphasiwedi</string>
+<string name="btn_sign_in">Ngena</string>
+<string name="register_prompt">Awunayo i-akhawunti? Bhalisa lapha.</string>
+<string name="welcome_back">Siyakwamukela futhi</string>
+<string name="sign_in_subtitle">Ngena ukuze uthole imisebenzi yezandla yase-Afrika</string>
+<string name="continue_google">Qhubeka nge-Google</string>
+<string name="create_account">Dala i-akhawunti</string>
+<string name="full_name">Igama eligcwele</string>
+<string name="register_as">Bhalisa njengo</string>
+<string name="buyer">Umthengi</string>
+<string name="seller">Umthengisi</string>
+</resources>
