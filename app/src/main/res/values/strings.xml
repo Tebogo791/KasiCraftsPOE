@@ -9,4 +9,10 @@
     <string name="register_prompt">Don’t have an account? Register here.</string>
     <string name="welcome_back">Welcome Back</string>
     <string name="sign_in_subtitle">Sign in to explore authentic African crafts</string>
+    <string name="continue_google">Continue with Google</string>
+    <string name="create_account">Create Account</string>
+    <string name="full_name">Full name</string>
+    <string name="register_as">Register as</string>
+    <string name="buyer">Buyer</string>
+    <string name="seller">Seller</string>
 </resources>
