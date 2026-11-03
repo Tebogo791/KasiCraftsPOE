@@ -38,3 +38,16 @@ A trusted backend (for example, Cloud Functions using the Admin SDK) must valida
 The `functions/index.js` trigger watches server-written `orders/{orderId}` transitions to `status: "completed"`. It grants one point per full R10 of `totalCents` (capped at 1,000 points) and uses a transaction with `loyaltyAwards/{orderId}` to prevent duplicate awards. Order creation, payment verification, and fulfillment confirmation are **not** implemented. Never mark an order completed from untrusted client input.
 
 Before deploying, install dependencies in `functions/`, run local emulator tests for retries and concurrent invocations, and confirm the Firebase project's billing plan supports Functions. A Functions deployment is separate from the Firestore rules deployment. No deployment has been performed by these commits.
+
+## Backend unit tests
+
+Run from the repository root after pulling this branch:
+
+```powershell
+cd functions
+npm install
+npm test
+npm run check
+```
+
+These tests verify reward arithmetic, invalid totals, and completed-order transition eligibility. They do **not** simulate concurrent Firestore transactions or prove deployment readiness. Run Firestore emulator integration tests and review live project rules before deploying. No payment flow or order-completion authority is implemented.
