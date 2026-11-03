@@ -48,7 +48,7 @@ class CartFragment : Fragment() {
             if (items.isEmpty()) {
                 Toast.makeText(requireContext(), "Your basket is empty!", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(requireContext(), "Processing Escrow Payment for R ${String.format(Locale.ROOT, "%.2f", totalValue)}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Checkout is not available yet. No payment has been taken or loyalty points awarded.", Toast.LENGTH_LONG).show()
             }
         }
     }
