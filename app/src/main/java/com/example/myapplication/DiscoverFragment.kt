@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.EditText
+import android.text.TextWatcher
+import android.text.Editable
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.ListenerRegistration
@@ -14,6 +17,14 @@ import androidx.recyclerview.widget.RecyclerView
 class DiscoverFragment : Fragment() {
     private lateinit var adapter: DiscoverProductAdapter
     private var productListener: ListenerRegistration? = null
+    private var allProducts: List<Product> = emptyList()
+    private var areaQuery = ""
+
+    private fun applyAreaFilter() {
+        adapter.setData(if (areaQuery.isBlank()) allProducts else allProducts.filter {
+            it.sellerArea.contains(areaQuery, ignoreCase = true)
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -36,6 +47,15 @@ class DiscoverFragment : Fragment() {
         rvProducts.layoutManager = LinearLayoutManager(requireContext())
         rvProducts.adapter = adapter
 
+        val areaInput = view.findViewById<EditText>(R.id.etDiscoverArea)
+        areaInput.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                areaQuery = s?.toString()?.trim().orEmpty()
+                applyAreaFilter()
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        })
         fetchProducts(progressBar)
     }
 
@@ -45,7 +65,8 @@ class DiscoverFragment : Fragment() {
             onProducts = { products, fromCache ->
                 if (!isAdded) return@observeProducts
                 progressBar.visibility = View.GONE
-                adapter.setData(products)
+                allProducts = products
+                applyAreaFilter()
                 if (products.isEmpty() && !fromCache) {
                     Toast.makeText(requireContext(), "No crafts listed yet. Add one from Sell.", Toast.LENGTH_SHORT).show()
                 }
