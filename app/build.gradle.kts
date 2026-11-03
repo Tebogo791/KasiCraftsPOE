@@ -39,6 +39,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.firebase.database)
     implementation(libs.firebase.firestore)
+    implementation("com.google.firebase:firebase-auth:23.2.1")
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
