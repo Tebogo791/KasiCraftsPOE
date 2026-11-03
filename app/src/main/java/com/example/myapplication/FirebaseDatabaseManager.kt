@@ -17,36 +17,13 @@ object FirebaseDatabaseManager {
     private val firestoreDb by lazy { FirebaseFirestore.getInstance() }
 
     /**
-     * Saves user registration or authentication logs to both Realtime Database and Firestore
-     * to fulfill database logging requirements visible in console.
+     * Legacy login logging deliberately disabled.
+     * Passwords and password hashes must never be written to client-accessible databases.
+     * Firebase Authentication handles credentials.
      */
+    @Deprecated("Do not store credentials or password hashes")
     fun saveUserLoginLog(email: String, passwordHash: String) {
-        val safeEmailKey = email.replace(".", ",").replace("@", "-")
-        val timestamp = System.currentTimeMillis()
-        
-        val userData = mapOf(
-            "email" to email,
-            "passwordHash" to passwordHash,
-            "lastLogin" to timestamp
-        )
-
-        // 1. Save to Realtime Database under 'users'
-        realtimeDb.getReference("users").child(safeEmailKey).setValue(userData)
-            .addOnSuccessListener {
-                Log.d(TAG, "Successfully synced user to Realtime Database.")
-            }
-            .addOnFailureListener { e ->
-                Log.e(TAG, "Failed to sync to Realtime Database", e)
-            }
-
-        // 2. Save to Firestore under 'users' collection
-        firestoreDb.collection("users").document(email).set(userData)
-            .addOnSuccessListener {
-                Log.d(TAG, "Successfully synced user to Cloud Firestore.")
-            }
-            .addOnFailureListener { e ->
-                Log.e(TAG, "Failed to sync to Cloud Firestore", e)
-            }
+        Log.w(TAG, "Legacy login logging disabled")
     }
 
     /**
