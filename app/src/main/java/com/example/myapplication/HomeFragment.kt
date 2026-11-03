@@ -7,15 +7,13 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.firebase.firestore.ListenerRegistration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     private lateinit var adapter: ProductAdapter
+    private var productListener: ListenerRegistration? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -42,21 +40,27 @@ class HomeFragment : Fragment() {
 
     private fun fetchProducts(progressBar: ProgressBar) {
         progressBar.visibility = View.VISIBLE
+        productListener = MarketplaceRepository.observeProducts(
+            onProducts = { products, fromCache ->
+                if (!isAdded) return@observeProducts
+                progressBar.visibility = View.GONE
+                adapter.setData(products)
+                if (products.isEmpty() && !fromCache) {
+                    Toast.makeText(requireContext(), "No crafts listed yet. Add one from Sell.", Toast.LENGTH_SHORT).show()
+                }
+            },
+            onError = { error ->
+                if (!isAdded) return@observeProducts
+                progressBar.visibility = View.GONE
+                Toast.makeText(requireContext(), "Unable to load crafts: ${error.localizedMessage}", Toast.LENGTH_LONG).show()
+            }
+        )
+    }
 
-        // Simulating API call to make the prototype look polished for your video
-        CoroutineScope(Dispatchers.Main).launch {
-            delay(1500) // Fake network delay
-
-            val fakeCraftData = listOf(
-                Product(1, "Handmade Zulu Basket", "Woven by local artisans in KwaZulu-Natal.", "R 250.00", "Sibusiso Zulu", imageResId = R.drawable.zulu_basket),
-                Product(2, "Beaded African Necklace", "Traditional beading with modern colors.", "R 180.00", "Elena Khumalo", imageResId = R.drawable.beaded_necklace),
-                Product(3, "Wooden Elephant Carving", "Hand-carved from sustainable wood.", "R 450.00", "Thabo Mokoena", imageResId = R.drawable.wooden_elephant),
-                Product(4, "Handmade Wooden Mug", "Locally sourced wood, perfect for morning coffee.", "R 120.00", "Nomsa Dlamini", imageResId = R.drawable.wooden_mug)
-            )
-
-            progressBar.visibility = View.GONE
-            adapter.setData(fakeCraftData)
-        }
+    override fun onDestroyView() {
+        productListener?.remove()
+        productListener = null
+        super.onDestroyView()
     }
 }
 
