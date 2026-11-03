@@ -3,6 +3,7 @@
 const { onDocumentUpdated } = require("firebase-functions/v2/firestore");
 const { initializeApp } = require("firebase-admin/app");
 const { getFirestore, FieldValue } = require("firebase-admin/firestore");
+const { calculatePoints, shouldAward } = require("./loyalty");
 
 initializeApp();
 const db = getFirestore();
@@ -14,7 +15,7 @@ exports.awardCompletedOrderLoyalty = onDocumentUpdated(
   async (event) => {
     const before = event.data?.before?.data();
     const after = event.data?.after?.data();
-    if (!before || !after || before.status === "completed" || after.status !== "completed") return;
+    if (!shouldAward(before, after)) return;
 
     const orderId = event.params.orderId;
     const buyerUid = after.buyerUid;
@@ -25,7 +26,7 @@ exports.awardCompletedOrderLoyalty = onDocumentUpdated(
     }
 
     // 1 point per full R10 spent; cap a single order at 1,000 points.
-    const points = Math.min(1000, Math.floor(totalCents / 1000));
+    const points = calculatePoints(totalCents);
     const awardRef = db.collection("loyaltyAwards").doc(orderId);
     const userRef = db.collection("users").doc(buyerUid);
     await db.runTransaction(async (tx) => {
