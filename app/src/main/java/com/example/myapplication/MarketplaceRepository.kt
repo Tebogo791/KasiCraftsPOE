@@ -25,7 +25,8 @@ object MarketplaceRepository {
                     body = doc.getString("description") ?: "",
                     price = if (rawPrice.startsWith("R")) rawPrice else "R $rawPrice",
                     sellerName = doc.getString("sellerName") ?: "Local Artisan",
-                    imageUrl = doc.getString("imageUrl") ?: ""
+                    imageUrl = doc.getString("imageUrl") ?: "",
+                    sellerArea = doc.getString("sellerArea") ?: ""
                 )
             }
             onProducts(products, snapshot.metadata.isFromCache)
