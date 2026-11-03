@@ -10,6 +10,12 @@ import android.widget.ImageView
 import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.Spinner
+import android.widget.ArrayAdapter
+import android.widget.AdapterView
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
+import com.google.firebase.firestore.FirebaseFirestore
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -36,6 +42,36 @@ class SettingsFragment : Fragment() {
         val switchNearMe = view.findViewById<Switch>(R.id.switchNearMe)
         val switchOffline = view.findViewById<Switch>(R.id.switchOfflineMode)
         val btnSave = view.findViewById<Button>(R.id.btnSaveSettings)
+
+        val languageSpinner = view.findViewById<Spinner>(R.id.spinnerLanguage)
+        val languages = listOf("English", "isiZulu", "Afrikaans")
+        val tags = listOf("en", "zu", "af")
+        languageSpinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, languages)
+        val activeTag = AppCompatDelegate.getApplicationLocales().toLanguageTags().substringBefore("-")
+        languageSpinner.setSelection(tags.indexOf(activeTag).takeIf { it >= 0 } ?: 0)
+        languageSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+            override fun onItemSelected(parent: AdapterView<*>?, selectedView: View?, position: Int, id: Long) {
+                val newTag = tags[position]
+                val current = AppCompatDelegate.getApplicationLocales().toLanguageTags().substringBefore("-").ifEmpty { "en" }
+                if (newTag != current) AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(newTag))
+            }
+        }
+        val loyaltyText = view.findViewById<TextView>(R.id.tvLoyaltyPoints)
+        val loyaltyProgress = view.findViewById<android.widget.ProgressBar>(R.id.pbLoyalty)
+        loyaltyProgress.max = 1000
+        loyaltyProgress.progress = 0
+        loyaltyText.text = "Loyalty points: unavailable"
+        FirebaseAuth.getInstance().currentUser?.uid?.let { uid ->
+            FirebaseFirestore.getInstance().collection("users").document(uid).get()
+                .addOnSuccessListener { doc ->
+                    if (!isAdded) return@addOnSuccessListener
+                    val points = (doc.getLong("loyaltyPoints") ?: 0L).coerceAtLeast(0L)
+                    loyaltyProgress.progress = (points % 1000L).toInt()
+                    loyaltyText.text = "$points points earned; ${1000 - points % 1000} to next milestone"
+                }
+        }
+
         val btnSignOut = view.findViewById<Button>(R.id.btnSignOut)
 
         val sharedPref = requireActivity().getSharedPreferences("KasiCraftsPrefs", Context.MODE_PRIVATE)
