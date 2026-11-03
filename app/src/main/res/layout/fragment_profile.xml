@@ -30,7 +30,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thabo Petersen"
+                android:id="@+id/tvAccountName"
+                android:text="Account"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 android:textStyle="bold"
@@ -39,7 +40,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Broome Member"
+                android:id="@+id/tvTrustStatus"
+                android:text="Artisan verification: not verified"
                 android:textColor="#888888"
                 android:textSize="14sp"
                 android:layout_marginTop="2dp"/>
@@ -60,11 +62,18 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:progress="65"
-            android:max="100"
+            android:progress="0"
+            android:max="1000"
             android:progressTint="#D84315"
             android:layout_marginBottom="24dp"/>
 
+        <TextView
+            android:id="@+id/tvProfileLoyalty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Loyalty points: 0"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="20dp" />
         <!-- Account Settings Section -->
         <TextView
             android:layout_width="wrap_content"
