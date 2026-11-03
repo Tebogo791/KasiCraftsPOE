@@ -22,6 +22,7 @@ class SellFragment : Fragment() {
         val etTitle = view.findViewById<EditText>(R.id.etProductTitle)
         val etPrice = view.findViewById<EditText>(R.id.etProductPrice)
         val etSeller = view.findViewById<EditText>(R.id.etProductSeller)
+        val etArea = view.findViewById<EditText>(R.id.etSellerArea)
         val btnSubmit = view.findViewById<Button>(R.id.btnSubmitCraft)
 
         btnSubmit.setOnClickListener {
@@ -36,13 +37,14 @@ class SellFragment : Fragment() {
 
             // Sync item details to online database live
             try {
-                FirebaseDatabaseManager.uploadCraftProduct(title, price, seller)
+                FirebaseDatabaseManager.uploadCraftProduct(title, price, seller, etArea.text.toString().trim())
                 Toast.makeText(requireContext(), "Product synced to Cloud Database!", Toast.LENGTH_LONG).show()
                 
                 // Clear out inputs upon success
                 etTitle.text.clear()
                 etPrice.text.clear()
                 etSeller.text.clear()
+                etArea.text.clear()
             } catch (e: Exception) {
                 Toast.makeText(requireContext(), "Upload triggered successfully", Toast.LENGTH_SHORT).show()
             }
