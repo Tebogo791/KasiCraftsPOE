@@ -1,0 +1,48 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+    function isOwner(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+    function safeUserFields() {
+      return !request.resource.data.diff(resource.data).affectedKeys()
+        .hasAny(['loyaltyPoints', 'artisanVerified', 'role', 'email']);
+    }
+    match /users/{uid} {
+      allow read: if isOwner(uid);
+      allow create: if isOwner(uid)
+        && request.resource.data.keys().hasOnly(['name', 'email', 'role', 'loyaltyPoints'])
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.loyaltyPoints == 0
+        && request.resource.data.role in ['buyer', 'seller'];
+      allow update: if isOwner(uid) && safeUserFields();
+      allow delete: if false;
+    }
+    match /products/{productId} {
+      allow read: if true;
+      allow create: if signedIn()
+        && request.resource.data.keys().hasOnly([
+          'title', 'price', 'sellerName', 'sellerArea',
+          'sellerUid', 'sellerEmailVerified', 'timestamp'
+        ])
+        && request.resource.data.sellerUid == request.auth.uid
+        && request.resource.data.title is string
+        && request.resource.data.price is string
+        && request.resource.data.sellerName is string
+        && request.resource.data.sellerArea is string
+        && request.resource.data.sellerEmailVerified is bool;
+      allow update, delete: if false;
+    }
+    // Completed orders and loyalty awards must be written by trusted backend code.
+    match /orders/{orderId} {
+      allow read: if signedIn() && resource.data.buyerUid == request.auth.uid;
+      allow write: if false;
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
