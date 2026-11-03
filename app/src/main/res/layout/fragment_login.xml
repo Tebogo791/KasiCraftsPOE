@@ -128,6 +128,17 @@
                 app:cornerRadius="12dp"
                 app:rippleColor="#40FFFFFF" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGoogleSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="20dp"
+                android:text="Continue with Google"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#34343A"
+                app:cornerRadius="12dp" />
+
             <TextView
                 android:id="@+id/tvRegister"
                 android:layout_width="wrap_content"
