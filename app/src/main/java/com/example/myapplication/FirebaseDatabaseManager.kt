@@ -57,9 +57,7 @@ object FirebaseDatabaseManager {
             "timestamp" to System.currentTimeMillis()
         )
 
-        // Sync product to Realtime Database
-        realtimeDb.getReference("products").push().setValue(productData)
-        
+        // Firestore is the single marketplace source; Android caches pending writes.
         // Sync product to Firestore
         firestoreDb.collection("products").add(productData)
     }
