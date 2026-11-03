@@ -4,6 +4,7 @@
 
     <!-- Required for REST API -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KasiCrafts"
         tools:targetApi="31">
+
+        <service
+            android:name=".KasiMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
         <activity
             android:name=".MainActivity"
