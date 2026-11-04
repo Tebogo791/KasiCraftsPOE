@@ -40,10 +40,13 @@ const listing = { title: "Handmade basket", price: "R100", sellerName: "Artisan"
 
 test("user can create and read own profile, but strangers cannot read it", async () => {
   await bounded("clearFirestore", () => env.clearFirestore());
-  await assertSucceeds(setDoc(doc(buyer(), "users/buyer1"), profile));
-  await assertSucceeds(getDoc(doc(buyer(), "users/buyer1")));
-  await assertFails(getDoc(doc(stranger(), "users/buyer1")));
-  await assertFails(getDoc(doc(guest(), "users/buyer1")));
+  console.log("[rules] clearFirestore complete");
+  console.log("[rules] creating buyer profile...");
+  await bounded("create buyer profile", () => assertSucceeds(setDoc(doc(buyer(), "users/buyer1"), profile)));
+  console.log("[rules] buyer profile created");
+  await bounded("read buyer profile", () => assertSucceeds(getDoc(doc(buyer(), "users/buyer1"))));
+  await bounded("deny stranger profile read", () => assertFails(getDoc(doc(stranger(), "users/buyer1"))));
+  await bounded("deny guest profile read", () => assertFails(getDoc(doc(guest(), "users/buyer1"))));
 });
 test("client cannot award loyalty points or claim verification", async () => {
   await bounded("clearFirestore", () => env.clearFirestore());
