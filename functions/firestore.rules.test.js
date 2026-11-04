@@ -1,7 +1,5 @@
 "use strict";
 const { before, after, test } = require("node:test");
-const { setTimeout: delay } = require("node:timers/promises");
-const assert = require("node:assert/strict");
 const { initializeTestEnvironment, assertFails, assertSucceeds } = require("@firebase/rules-unit-testing");
 const { doc, getDoc, setDoc, updateDoc } = require("firebase/firestore");
 const { readFileSync } = require("node:fs");
