@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#0A0A0C">
+    android:background="@color/app_bg">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
             android:id="@+id/loginFormContainer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_login_card"
+            android:background="@color/card_bg"
             android:elevation="8dp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
@@ -43,7 +43,7 @@
                 android:layout_marginBottom="6dp"
                 android:letterSpacing="0.02"
                 android:text="@string/welcome_back"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -53,7 +53,7 @@
                 android:layout_marginBottom="32dp"
                 android:gravity="center"
                 android:text="@string/sign_in_subtitle"
-                android:textColor="#A0A0AB"
+                android:textColor="@color/text_secondary"
                 android:textSize="14sp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -62,17 +62,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="18dp"
                 android:hint="@string/hint_email"
-                app:boxBackgroundColor="#16161A"
+                app:boxBackgroundColor="@color/input_bg"
                 app:boxCornerRadiusBottomEnd="12dp"
                 app:boxCornerRadiusBottomStart="12dp"
                 app:boxCornerRadiusTopEnd="12dp"
                 app:boxCornerRadiusTopStart="12dp"
-                app:boxStrokeColor="#FF6D00"
+                app:boxStrokeColor="@color/accent_orange"
                 app:boxStrokeWidth="1.5dp"
                 app:boxStrokeWidthFocused="2.5dp"
-                app:hintTextColor="#FF6D00"
+                app:hintTextColor="@color/accent_orange"
                 app:startIconDrawable="@android:drawable/ic_dialog_email"
-                app:startIconTint="#A0A0AB">
+                app:startIconTint="@color/text_secondary">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEmail"
@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:paddingVertical="16dp"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/text_primary"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,21 +88,21 @@
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="24dp"
                 android:hint="@string/hint_password"
-                app:boxBackgroundColor="#16161A"
+                app:boxBackgroundColor="@color/input_bg"
                 app:boxCornerRadiusBottomEnd="12dp"
                 app:boxCornerRadiusBottomStart="12dp"
                 app:boxCornerRadiusTopEnd="12dp"
                 app:boxCornerRadiusTopStart="12dp"
-                app:boxStrokeColor="#FF6D00"
+                app:boxStrokeColor="@color/accent_orange"
                 app:boxStrokeWidth="1.5dp"
                 app:boxStrokeWidthFocused="2.5dp"
-                app:hintTextColor="#FF6D00"
+                app:hintTextColor="@color/accent_orange"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="#A0A0AB"
+                app:passwordToggleTint="@color/text_secondary"
                 app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
-                app:startIconTint="#A0A0AB">
+                app:startIconTint="@color/text_secondary">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPassword"
@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:paddingVertical="16dp"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/text_primary"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -118,8 +118,8 @@
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:layout_marginBottom="24dp"
-                android:backgroundTint="#FF6D00"
+                android:layout_marginBottom="14dp"
+                android:backgroundTint="@color/accent_orange"
                 android:stateListAnimator="@null"
                 android:text="@string/btn_sign_in"
                 android:textColor="#FFFFFF"
@@ -132,11 +132,24 @@
                 android:id="@+id/btnGoogleSignIn"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="14dp"
                 android:text="@string/continue_google"
                 android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:backgroundTint="#34343A"
+                android:textColor="@color/text_primary"
+                android:backgroundTint="@color/input_bg"
+                app:cornerRadius="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBrowseGuest"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/btn_browse_guest"
+                android:textAllCaps="false"
+                android:textColor="@color/accent_orange"
+                app:strokeColor="@color/accent_orange"
+                app:strokeWidth="1.5dp"
                 app:cornerRadius="12dp" />
 
             <TextView
@@ -147,7 +160,7 @@
                 android:focusable="true"
                 android:padding="8dp"
                 android:text="@string/register_prompt"
-                android:textColor="#FF6D00"
+                android:textColor="@color/accent_orange"
                 android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>

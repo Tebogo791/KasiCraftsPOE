@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Theme Colors (Night Mode) -->
+    <color name="app_bg">#0A0A0C</color>
+    <color name="card_bg">#16161A</color>
+    <color name="input_bg">#121214</color>
+    <color name="stroke_color">#1E1E24</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#A0A0AB</color>
+    <color name="accent_orange">#FF6D00</color>
+</resources>

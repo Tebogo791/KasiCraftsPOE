@@ -17,9 +17,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
+import com.google.android.libraries.identity.googleid.GetSignInWithGoogleOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment() {
@@ -33,6 +35,7 @@ class LoginFragment : Fragment() {
         val passwordInput = view.findViewById<EditText>(R.id.etPassword)
         val loginButton = view.findViewById<Button>(R.id.btnLogin)
         val googleButton = view.findViewById<Button>(R.id.btnGoogleSignIn)
+        val guestButton = view.findViewById<Button>(R.id.btnBrowseGuest)
 
         loginButton.setOnClickListener {
             val email = emailInput.text.toString().trim()
@@ -65,13 +68,22 @@ class LoginFragment : Fragment() {
         googleButton.setOnClickListener {
             googleButton.isEnabled = false
             viewLifecycleOwner.lifecycleScope.launch {
+                val serverClientId = getString(R.string.default_web_client_id)
                 try {
-                    val option = GetGoogleIdOption.Builder()
+                    val googleIdOption = GetGoogleIdOption.Builder()
                         .setFilterByAuthorizedAccounts(false)
-                        .setServerClientId(getString(R.string.default_web_client_id))
+                        .setServerClientId(serverClientId)
                         .setAutoSelectEnabled(false)
                         .build()
-                    val request = GetCredentialRequest.Builder().addCredentialOption(option).build()
+
+                    val signInWithGoogleOption = GetSignInWithGoogleOption.Builder(serverClientId)
+                        .build()
+
+                    val request = GetCredentialRequest.Builder()
+                        .addCredentialOption(googleIdOption)
+                        .addCredentialOption(signInWithGoogleOption)
+                        .build()
+
                     val result = CredentialManager.create(requireContext()).getCredential(
                         context = requireActivity(),
                         request = request
@@ -95,14 +107,28 @@ class LoginFragment : Fragment() {
                         }
                 } catch (e: GetCredentialException) {
                     Log.e("KasiCraftsLogin", "Google credential request failed", e)
-                    if (isAdded) Toast.makeText(requireContext(), "Google sign-in unavailable: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
                     googleButton.isEnabled = true
+                    if (isAdded) {
+                        MaterialAlertDialogBuilder(requireContext())
+                            .setTitle("Google Account Prompt")
+                            .setMessage("No saved Google Account found on this device's Settings. You can add a Google Account in device Settings, or continue using Email sign-in / Guest mode.")
+                            .setPositiveButton("Browse as Guest") { dialog, _ ->
+                                dialog.dismiss()
+                                findNavController().navigate(R.id.action_login_to_home)
+                            }
+                            .setNegativeButton("OK", null)
+                            .show()
+                    }
                 } catch (e: Exception) {
                     Log.e("KasiCraftsLogin", "Google sign-in failed", e)
-                    if (isAdded) Toast.makeText(requireContext(), "Google sign-in failed: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
                     googleButton.isEnabled = true
+                    if (isAdded) Toast.makeText(requireContext(), "Google sign-in failed: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
                 }
             }
+        }
+
+        guestButton.setOnClickListener {
+            findNavController().navigate(R.id.action_login_to_home)
         }
 
         view.findViewById<TextView>(R.id.tvRegister).setOnClickListener {

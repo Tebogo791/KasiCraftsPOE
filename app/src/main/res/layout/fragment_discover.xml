@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#0A0A0C"
+    android:background="@color/app_bg"
     android:padding="20dp">
 
     <!-- Header Section -->
@@ -18,18 +18,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Discover Gallery"
+            android:text="@string/discover_gallery"
             android:textSize="26sp"
             android:textStyle="bold"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/text_primary"
             android:letterSpacing="0.01"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Immersive view of authentic cultural collections"
+            android:text="@string/discover_subtitle"
             android:textSize="13sp"
-            android:textColor="#A0A0AB"
+            android:textColor="@color/text_secondary"
             android:layout_marginTop="2dp"/>
     </LinearLayout>
 
@@ -37,26 +37,26 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Search premium collections..."
-        app:hintTextColor="#A0A0AB"
-        app:boxStrokeColor="#FF6D00"
+        android:hint="@string/search_collections_hint"
+        app:hintTextColor="@color/text_secondary"
+        app:boxStrokeColor="@color/accent_orange"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="1.5dp"
         app:boxCornerRadiusTopStart="16dp"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusBottomEnd="16dp"
-        app:boxBackgroundColor="#16161A"
+        app:boxBackgroundColor="@color/card_bg"
         app:startIconDrawable="@android:drawable/ic_menu_search"
-        app:startIconTint="#A0A0AB"
-        android:layout_marginBottom="20dp"
+        app:startIconTint="@color/text_secondary"
+        android:layout_marginBottom="12dp"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/text_primary"
             android:textSize="15sp"
             android:paddingVertical="14dp"
             android:maxLines="1"
@@ -66,16 +66,24 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:hint="Near Me: filter by town or area"
+        android:layout_marginBottom="16dp"
+        android:hint="@string/filter_area_hint"
+        app:hintTextColor="@color/text_secondary"
+        app:boxStrokeColor="@color/accent_orange"
+        app:boxBackgroundColor="@color/card_bg"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etDiscoverArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapWords"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/text_primary" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProducts"
         android:layout_width="match_parent"
@@ -89,6 +97,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="gone"
-        android:indeterminateTint="#FF6D00"/>
+        android:indeterminateTint="@color/accent_orange"/>
 
 </LinearLayout>

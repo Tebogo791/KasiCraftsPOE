@@ -8,8 +8,8 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.example.myapplication" />
-                  <option name="mobileSdkAppId" value="1:680728774876:android:c55be6d31dcae903580c19" />
+                  <option name="appId" value="co.za.kasicrafts.app" />
+                  <option name="mobileSdkAppId" value="1:680728774876:android:d66bf7e42edbf014691d20" />
                   <option name="projectId" value="kasicrafts-5cd37" />
                   <option name="projectNumber" value="680728774876" />
                 </ConnectionSetting>

@@ -1,19 +1,79 @@
 <resources>
-<string name="app_name">KasiCrafts</string>
-<string name="menu_home">Tuis</string>
-<string name="menu_settings">Instellings</string>
-<string name="kasi_crafts_logo">KasiCrafts-logo</string>
-<string name="hint_email">E-pos</string>
-<string name="hint_password">Wagwoord</string>
-<string name="btn_sign_in">Meld aan</string>
-<string name="register_prompt">Het jy nie \'n rekening nie? Registreer hier.</string>
-<string name="welcome_back">Welkom terug</string>
-<string name="sign_in_subtitle">Meld aan om egte Afrika-handwerk te ontdek</string>
-<string name="continue_google">Gaan voort met Google</string>
-<string name="create_account">Skep rekening</string>
-<string name="full_name">Volle naam</string>
-<string name="register_as">Registreer as</string>
-<string name="buyer">Koper</string>
-<string name="seller">Verkoper</string>
-<string name="language_label">Toepassingstaal</string>
+    <string name="app_name">KasiCrafts</string>
+    <string name="menu_home">Tuis</string>
+    <string name="menu_discover">Ontdek</string>
+    <string name="menu_sell">Verkoop</string>
+    <string name="menu_cart">Mandjie</string>
+    <string name="menu_settings">Instellings</string>
+    <string name="menu_profile">Profiel</string>
+
+    <string name="kasi_crafts_logo">KasiCrafts-logo</string>
+    <string name="hint_email">E-pos</string>
+    <string name="hint_password">Wagwoord</string>
+    <string name="btn_sign_in">Meld aan</string>
+    <string name="btn_browse_guest">Blaai as Gas</string>
+    <string name="register_prompt">Het jy nie \'n rekening nie? Registreer hier.</string>
+    <string name="welcome_back">Welkom terug</string>
+    <string name="sign_in_subtitle">Meld aan om egte Afrika-handwerk te ontdek</string>
+    <string name="continue_google">Gaan voort met Google</string>
+
+    <string name="create_account">Skep rekening</string>
+    <string name="full_name">Volle naam</string>
+    <string name="register_as">Registreer as</string>
+    <string name="buyer">Koper</string>
+    <string name="seller">Verkoper</string>
+    <string name="language_label">Toepassingstaal</string>
+
+    <!-- Home Screen -->
+    <string name="explore_crafts">Verken Handwerk</string>
+    <string name="authentic_african_culture">Egte Afrika-kultuur</string>
+    <string name="search_crafts_hint">Soek vir unieke handwerk...</string>
+    <string name="cat_all">Alle Items</string>
+    <string name="cat_baskets">Mandjies</string>
+    <string name="cat_pottery">Pottebakkery</string>
+    <string name="cat_jewelry">Juweliersware</string>
+    <string name="cat_textiles">Tekstiele</string>
+
+    <!-- Discover Screen -->
+    <string name="discover_gallery">Ontdekkingsgalery</string>
+    <string name="discover_subtitle">Meesleurende blik op kulturele versamelings</string>
+    <string name="search_collections_hint">Soek premium versamelings...</string>
+    <string name="filter_area_hint">Naby My: filtreer volgens dorp of gebied</string>
+
+    <!-- Sell Screen -->
+    <string name="list_your_craft">Lys Jou Handwerk</string>
+    <string name="sell_subtitle">Publiseer jou skeppings op die markplein</string>
+    <string name="hint_product_title">Produktitel</string>
+    <string name="hint_product_price">Prys (bv. R 150)</string>
+    <string name="hint_seller_name">Ambagsman Verkoper Naam</string>
+    <string name="hint_seller_area">Verkoper dorp of gebied (opsioneel)</string>
+    <string name="hint_image_url">Beeld URL (opsioneel)</string>
+    <string name="hint_category">Kies Kategorie</string>
+    <string name="btn_upload_firebase">Laai Op</string>
+
+    <!-- Cart Screen -->
+    <string name="escrow_active_title">Eskrow Koperbeskerming Aktief</string>
+    <string name="escrow_active_desc">Jou fondse word veilig gehou totdat jy aflewering verifieer.</string>
+    <string name="your_basket">Jou Mandjie</string>
+    <string name="summary_title">Opsomming</string>
+    <string name="subtotal_label">Subtotaal</string>
+    <string name="delivery_label">Veilige Aflewering</string>
+    <string name="total_label">Totaal</string>
+    <string name="btn_checkout">Betaal met Eskrow Beskerming</string>
+
+    <!-- Settings / Profile -->
+    <string name="loyalty_progress">Lojaliteitsvordering</string>
+    <string name="push_notifications">Stootkennisgewings</string>
+    <string name="near_me_alerts">Naby my waarskuwings</string>
+    <string name="offline_mode">Aflynmodus</string>
+    <string name="dark_mode">Donker modus</string>
+    <string name="edit_profile">Wysig Profiel</string>
+    <string name="change_password">Verander Wagwoord</string>
+    <string name="payment_methods">Betaalmetodes</string>
+    <string name="delivery_addresses">Afleweringsadresse</string>
+    <string name="btn_save_preferences">Stoor Profielvoorkeure</string>
+    <string name="btn_sign_out">Meld Uit</string>
+    <string name="edit_profile_title">Wysig Vertoonnaam</string>
+    <string name="change_password_title">Verander Rekeningwagwoord</string>
+    <string name="delivery_address_title">Gestoorde Afleweringsadres</string>
 </resources>

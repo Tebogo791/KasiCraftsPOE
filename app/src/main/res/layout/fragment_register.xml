@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A0A0C"
+    android:background="@color/app_bg"
     android:fillViewport="true">
     <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
@@ -11,34 +11,34 @@
         android:padding="28dp">
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
             android:text="Join KasiCrafts" android:textSize="28sp" android:textStyle="bold"
-            android:textColor="#FFFFFF" android:layout_marginBottom="24dp" />
+            android:textColor="@color/text_primary" android:layout_marginBottom="24dp" />
         <EditText android:id="@+id/etRegisterName" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:hint="@string/full_name"
-            android:inputType="textPersonName" android:textColor="#FFFFFF"
-            android:textColorHint="#A0A0AB" />
+            android:inputType="textPersonName" android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_secondary" />
         <EditText android:id="@+id/etRegisterEmail" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:hint="@string/hint_email"
-            android:inputType="textEmailAddress" android:textColor="#FFFFFF"
-            android:textColorHint="#A0A0AB" />
+            android:inputType="textEmailAddress" android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_secondary" />
         <EditText android:id="@+id/etRegisterPassword" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:hint="Password (6+ characters)"
-            android:inputType="textPassword" android:textColor="#FFFFFF"
-            android:textColorHint="#A0A0AB" />
+            android:inputType="textPassword" android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_secondary" />
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="@string/register_as" android:textColor="#FFFFFF" android:layout_marginTop="16dp" />
+            android:text="@string/register_as" android:textColor="@color/text_primary" android:layout_marginTop="16dp" />
         <RadioGroup android:id="@+id/rgRole" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:orientation="horizontal"
             android:checkedButton="@id/rbBuyer">
             <RadioButton android:id="@+id/rbBuyer" android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:text="@string/buyer"
-                android:textColor="#FFFFFF" android:buttonTint="#FF6D00" />
+                android:textColor="@color/text_primary" android:buttonTint="@color/accent_orange" />
             <RadioButton android:id="@+id/rbSeller" android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:text="@string/seller"
-                android:textColor="#FFFFFF" android:buttonTint="#FF6D00" />
+                android:textColor="@color/text_primary" android:buttonTint="@color/accent_orange" />
         </RadioGroup>
         <Button android:id="@+id/btnCreateAccount" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:text="@string/create_account"
-            android:backgroundTint="#FF6D00" android:textColor="#FFFFFF"
+            android:backgroundTint="@color/accent_orange" android:textColor="#FFFFFF"
             android:layout_marginTop="24dp" />
     </LinearLayout>
 </ScrollView>

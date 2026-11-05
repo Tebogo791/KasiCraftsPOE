@@ -1,29 +1,36 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import android.widget.EditText
-import android.text.TextWatcher
-import android.text.Editable
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.firebase.firestore.ListenerRegistration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.ListenerRegistration
 
 class DiscoverFragment : Fragment() {
     private lateinit var adapter: DiscoverProductAdapter
     private var productListener: ListenerRegistration? = null
     private var allProducts: List<Product> = emptyList()
+    private var searchQuery = ""
     private var areaQuery = ""
 
-    private fun applyAreaFilter() {
-        adapter.setData(if (areaQuery.isBlank()) allProducts else allProducts.filter {
-            it.sellerArea.contains(areaQuery, ignoreCase = true)
-        })
+    private fun applyFilters() {
+        val filtered = allProducts.filter { product ->
+            val matchesArea = areaQuery.isBlank() || product.sellerArea.contains(areaQuery, ignoreCase = true)
+            val matchesSearch = searchQuery.isBlank() ||
+                    product.title.contains(searchQuery, ignoreCase = true) ||
+                    product.sellerName.contains(searchQuery, ignoreCase = true) ||
+                    product.body.contains(searchQuery, ignoreCase = true)
+            matchesArea && matchesSearch
+        }
+        adapter.setData(filtered)
     }
 
     override fun onCreateView(
@@ -37,25 +44,35 @@ class DiscoverFragment : Fragment() {
 
         val rvProducts = view.findViewById<RecyclerView>(R.id.rvProducts)
         val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
+        val etSearch = view.findViewById<EditText>(R.id.etSearch)
+        val areaInput = view.findViewById<EditText>(R.id.etDiscoverArea)
 
         adapter = DiscoverProductAdapter { product ->
             CartManager.addItem(product)
             Toast.makeText(requireContext(), "${product.title} added to basket!", Toast.LENGTH_SHORT).show()
         }
 
-        // Set LinearLayoutManager for an immersive, vertical magazine-style feed
         rvProducts.layoutManager = LinearLayoutManager(requireContext())
         rvProducts.adapter = adapter
 
-        val areaInput = view.findViewById<EditText>(R.id.etDiscoverArea)
-        areaInput.addTextChangedListener(object : TextWatcher {
+        etSearch?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                areaQuery = s?.toString()?.trim().orEmpty()
-                applyAreaFilter()
+                searchQuery = s?.toString()?.trim().orEmpty()
+                applyFilters()
             }
             override fun afterTextChanged(s: Editable?) {}
         })
+
+        areaInput?.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                areaQuery = s?.toString()?.trim().orEmpty()
+                applyFilters()
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
         fetchProducts(progressBar)
     }
 
@@ -66,15 +83,11 @@ class DiscoverFragment : Fragment() {
                 if (!isAdded) return@observeProducts
                 progressBar.visibility = View.GONE
                 allProducts = products
-                applyAreaFilter()
-                if (products.isEmpty() && !fromCache) {
-                    Toast.makeText(requireContext(), "No crafts listed yet. Add one from Sell.", Toast.LENGTH_SHORT).show()
-                }
+                applyFilters()
             },
             onError = { error ->
                 if (!isAdded) return@observeProducts
                 progressBar.visibility = View.GONE
-                Toast.makeText(requireContext(), "Unable to load crafts: ${error.localizedMessage}", Toast.LENGTH_LONG).show()
             }
         )
     }
@@ -107,14 +120,21 @@ class DiscoverProductAdapter(private val onClick: (Product) -> Unit) : RecyclerV
 
     class DiscoverViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(product: Product, onClick: (Product) -> Unit) {
-            itemView.findViewById<android.widget.TextView>(R.id.tvTitle).text = product.title
+            val titleText = if (product.isSample) "${product.title} [Sample]" else product.title
+            itemView.findViewById<android.widget.TextView>(R.id.tvTitle).text = titleText
             itemView.findViewById<android.widget.TextView>(R.id.tvSeller).text = "by " + product.sellerName
             itemView.findViewById<android.widget.TextView>(R.id.tvPrice).text = product.price
-            
+
             val ivProduct = itemView.findViewById<android.widget.ImageView>(R.id.ivProduct)
-            
+
+            val imageSource: Any = when {
+                product.imageResId != null && product.imageResId != 0 -> product.imageResId
+                product.imageUrl.isNotBlank() -> product.imageUrl
+                else -> R.drawable.ic_placeholder_logo
+            }
+
             com.bumptech.glide.Glide.with(itemView.context)
-                .load(product.imageResId ?: product.imageUrl)
+                .load(imageSource)
                 .placeholder(R.drawable.ic_placeholder_logo)
                 .error(R.drawable.ic_placeholder_logo)
                 .into(ivProduct)

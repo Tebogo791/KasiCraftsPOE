@@ -1,19 +1,79 @@
 <resources>
-<string name="app_name">KasiCrafts</string>
-<string name="menu_home">Ikhaya</string>
-<string name="menu_settings">Izilungiselelo</string>
-<string name="kasi_crafts_logo">Ilogo yeKasiCrafts</string>
-<string name="hint_email">I-imeyili</string>
-<string name="hint_password">Iphasiwedi</string>
-<string name="btn_sign_in">Ngena</string>
-<string name="register_prompt">Awunayo i-akhawunti? Bhalisa lapha.</string>
-<string name="welcome_back">Siyakwamukela futhi</string>
-<string name="sign_in_subtitle">Ngena ukuze uthole imisebenzi yezandla yase-Afrika</string>
-<string name="continue_google">Qhubeka nge-Google</string>
-<string name="create_account">Dala i-akhawunti</string>
-<string name="full_name">Igama eligcwele</string>
-<string name="register_as">Bhalisa njengo</string>
-<string name="buyer">Umthengi</string>
-<string name="seller">Umthengisi</string>
-<string name="language_label">Ulimi lohlelo lokusebenza</string>
+    <string name="app_name">KasiCrafts</string>
+    <string name="menu_home">Ikhaya</string>
+    <string name="menu_discover">Thola</string>
+    <string name="menu_sell">Thengisa</string>
+    <string name="menu_cart">Inqola</string>
+    <string name="menu_settings">Izilungiselelo</string>
+    <string name="menu_profile">Iphrofayili</string>
+
+    <string name="kasi_crafts_logo">Ilogo yeKasiCrafts</string>
+    <string name="hint_email">I-imeyili</string>
+    <string name="hint_password">Iphasiwedi</string>
+    <string name="btn_sign_in">Ngena</string>
+    <string name="btn_browse_guest">Bheka njengesivakashi</string>
+    <string name="register_prompt">Awunayo i-akhawunti? Bhalisa lapha.</string>
+    <string name="welcome_back">Siyakwamukela futhi</string>
+    <string name="sign_in_subtitle">Ngena ukuze uthole imisebenzi yezandla yase-Afrika</string>
+    <string name="continue_google">Qhubeka nge-Google</string>
+
+    <string name="create_account">Dala i-akhawunti</string>
+    <string name="full_name">Igama eligcwele</string>
+    <string name="register_as">Bhalisa njengo</string>
+    <string name="buyer">Umthengi</string>
+    <string name="seller">Umthengisi</string>
+    <string name="language_label">Ulimi lohlelo lokusebenza</string>
+
+    <!-- Home Screen -->
+    <string name="explore_crafts">Hlola Imisebenzi Yezandla</string>
+    <string name="authentic_african_culture">Amasiko Sangempela Ase-Afrika</string>
+    <string name="search_crafts_hint">Cinga imikhiqizo yezandla...</string>
+    <string name="cat_all">Zonke Izinto</string>
+    <string name="cat_baskets">Izimbiza Nezakhiwo</string>
+    <string name="cat_pottery">Izitsha Zobumba</string>
+    <string name="cat_jewelry">Izinto Zokuhlobisa</string>
+    <string name="cat_textiles">Izindwangu</string>
+
+    <!-- Discover Screen -->
+    <string name="discover_gallery">Igalari Yokuthola</string>
+    <string name="discover_subtitle">Buka imikhiqizo namasiko ahlukahlukene</string>
+    <string name="search_collections_hint">Cinga imikhiqizo emihle...</string>
+    <string name="filter_area_hint">Eduze Namahhovisi: hlunga nge-dolobha noma indawo</string>
+
+    <!-- Sell Screen -->
+    <string name="list_your_craft">Faka Umkhiqizo Wakho</string>
+    <string name="sell_subtitle">Dicilela phambili umkhiqizo wakho emakethe</string>
+    <string name="hint_product_title">Isihloko Somkhiqizo</string>
+    <string name="hint_product_price">Intengo (isbr. R 150)</string>
+    <string name="hint_seller_name">Igama Lompheki/Umthengisi</string>
+    <string name="hint_seller_area">Idolobha lomthengisi (uma likhona)</string>
+    <string name="hint_image_url">I-URL yesithombe (uma ikhona)</string>
+    <string name="hint_category">Khetha Umkhakha</string>
+    <string name="btn_upload_firebase">Faka</string>
+
+    <!-- Cart Screen -->
+    <string name="escrow_active_title">Ukuvikelwa Kwemali Kusebenza</string>
+    <string name="escrow_active_desc">Imali yakho igcinwe ngokuphepha kuze kube uqinisekisa ukuthunyelwa.</string>
+    <string name="your_basket">Inqola Yakho</string>
+    <string name="summary_title">Isifinyezo</string>
+    <string name="subtotal_label">Isamba Sendawana</string>
+    <string name="delivery_label">Ukulethwa Okuphephile</string>
+    <string name="total_label">Isamba Wonke</string>
+    <string name="btn_checkout">Khokha Ngokuvikela Okuphephile</string>
+
+    <!-- Settings / Profile -->
+    <string name="loyalty_progress">Inqubekelaphambili Yenzuzo</string>
+    <string name="push_notifications">Izaziso push</string>
+    <string name="near_me_alerts">Izaziso eziseduze</string>
+    <string name="offline_mode">Imodi engaxhunyiwe inthanethi</string>
+    <string name="dark_mode">Imodi emnyama</string>
+    <string name="edit_profile">Hlela Iphrofayili</string>
+    <string name="change_password">Bhalisa Iphasiwedi Entsha</string>
+    <string name="payment_methods">Izindlela Zokukhokha</string>
+    <string name="delivery_addresses">Amakheli Okuthumela</string>
+    <string name="btn_save_preferences">Gcina Izilungiselelo</string>
+    <string name="btn_sign_out">Phuma</string>
+    <string name="edit_profile_title">Hlela Igama Lephrofayili</string>
+    <string name="change_password_title">Bhalisa Iphasiwedi Entsha</string>
+    <string name="delivery_address_title">Ikheli Lokuthumela Eligciniwe</string>
 </resources>

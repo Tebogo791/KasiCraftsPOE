@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A0A0C"
+    android:background="@color/app_bg"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,11 +14,11 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#121214"
+            app:cardBackgroundColor="@color/card_bg"
             app:cardCornerRadius="24dp"
             app:cardElevation="0dp"
             app:strokeWidth="1dp"
-            app:strokeColor="#1E1E24"
+            app:strokeColor="@color/stroke_color"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,8 +35,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="List Your Craft"
-                    android:textColor="#FFFFFF"
+                    android:text="@string/list_your_craft"
+                    android:textColor="@color/text_primary"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="6dp" />
@@ -44,8 +44,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Publish your authentic creations to the cloud database marketplace"
-                    android:textColor="#A0A0AB"
+                    android:text="@string/sell_subtitle"
+                    android:textColor="@color/text_secondary"
                     android:textSize="14sp"
                     android:layout_marginBottom="28dp" />
 
@@ -54,10 +54,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="Product Title"
-                    app:hintTextColor="#FF6D00"
-                    app:boxStrokeColor="#FF6D00"
-                    app:boxBackgroundColor="#16161A"
+                    android:hint="@string/hint_product_title"
+                    app:hintTextColor="@color/accent_orange"
+                    app:boxStrokeColor="@color/accent_orange"
+                    app:boxBackgroundColor="@color/input_bg"
                     app:boxCornerRadiusTopStart="12dp" app:boxCornerRadiusTopEnd="12dp"
                     app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusBottomEnd="12dp"
                     style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
@@ -65,7 +65,7 @@
                         android:id="@+id/etProductTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/text_primary"
                         android:inputType="textCapWords" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,10 +74,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="Price (e.g. R 150)"
-                    app:hintTextColor="#FF6D00"
-                    app:boxStrokeColor="#FF6D00"
-                    app:boxBackgroundColor="#16161A"
+                    android:hint="@string/hint_product_price"
+                    app:hintTextColor="@color/accent_orange"
+                    app:boxStrokeColor="@color/accent_orange"
+                    app:boxBackgroundColor="@color/input_bg"
                     app:boxCornerRadiusTopStart="12dp" app:boxCornerRadiusTopEnd="12dp"
                     app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusBottomEnd="12dp"
                     style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
@@ -85,7 +85,7 @@
                         android:id="@+id/etProductPrice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/text_primary"
                         android:inputType="textCapWords" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,11 +93,11 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="28dp"
-                    android:hint="Artisan Seller Name"
-                    app:hintTextColor="#FF6D00"
-                    app:boxStrokeColor="#FF6D00"
-                    app:boxBackgroundColor="#16161A"
+                    android:layout_marginBottom="16dp"
+                    android:hint="@string/hint_seller_name"
+                    app:hintTextColor="@color/accent_orange"
+                    app:boxStrokeColor="@color/accent_orange"
+                    app:boxBackgroundColor="@color/input_bg"
                     app:boxCornerRadiusTopStart="12dp" app:boxCornerRadiusTopEnd="12dp"
                     app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusBottomEnd="12dp"
                     style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
@@ -105,33 +105,86 @@
                         android:id="@+id/etProductSeller"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/text_primary"
                         android:inputType="textCapWords" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- Seller Town / Area -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="Seller town or area (optional)"
+                    android:hint="@string/hint_seller_area"
+                    app:hintTextColor="@color/accent_orange"
+                    app:boxStrokeColor="@color/accent_orange"
+                    app:boxBackgroundColor="@color/input_bg"
+                    app:boxCornerRadiusTopStart="12dp" app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusBottomEnd="12dp"
                     style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etSellerArea"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textCapWords"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="@color/text_primary" />
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Product Image URL -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:hint="@string/hint_image_url"
+                    app:hintTextColor="@color/accent_orange"
+                    app:boxStrokeColor="@color/accent_orange"
+                    app:boxBackgroundColor="@color/input_bg"
+                    app:boxCornerRadiusTopStart="12dp" app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusBottomEnd="12dp"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etImageUrl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textUri"
+                        android:textColor="@color/text_primary" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Category Selection Label -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hint_category"
+                    android:textColor="@color/accent_orange"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- Spinner for Category Selection -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="28dp"
+                    app:cardBackgroundColor="@color/input_bg"
+                    app:cardCornerRadius="12dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/accent_orange">
+                    <Spinner
+                        android:id="@+id/spinnerCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:paddingHorizontal="12dp" />
+                </com.google.android.material.card.MaterialCardView>
+
                 <!-- Submit Button -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnSubmitCraft"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
-                    android:text="Upload to Firebase"
+                    android:text="@string/btn_upload_firebase"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="#FFFFFF"
-                    android:backgroundTint="#FF6D00"
+                    android:backgroundTint="@color/accent_orange"
                     app:cornerRadius="12dp" />
 
             </LinearLayout>

@@ -8,13 +8,15 @@ import retrofit2.http.GET
 data class Product(
     val id: Int,
     val title: String,
-    val body: String,
+    val body: String = "",
     val price: String = "R 0.00",
     val sellerName: String = "Local Artisan",
-    val imageUrl: String = "https://picsum.photos/200",
+    val imageUrl: String = "",
     val imageResId: Int? = null,
     val sellerArea: String = "",
-    val sellerUid: String = ""
+    val sellerUid: String = "",
+    val category: String = "Crafts",
+    val isSample: Boolean = false
 )
 
 // API Interface

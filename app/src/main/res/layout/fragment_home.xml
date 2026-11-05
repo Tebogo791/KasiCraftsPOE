@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#0A0A0C"
+    android:background="@color/app_bg"
     android:padding="20dp">
 
     <!-- Header Section -->
@@ -22,18 +22,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Explore Crafts"
+                android:text="@string/explore_crafts"
                 android:textSize="26sp"
                 android:textStyle="bold"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:letterSpacing="0.01"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Authentic African Culture"
+                android:text="@string/authentic_african_culture"
                 android:textSize="13sp"
-                android:textColor="#A0A0AB"
+                android:textColor="@color/text_secondary"
                 android:layout_marginTop="2dp"/>
         </LinearLayout>
 
@@ -51,18 +51,18 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Search for unique crafts..."
-        app:hintTextColor="#A0A0AB"
-        app:boxStrokeColor="#FF6D00"
+        android:hint="@string/search_crafts_hint"
+        app:hintTextColor="@color/text_secondary"
+        app:boxStrokeColor="@color/accent_orange"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="1.5dp"
         app:boxCornerRadiusTopStart="16dp"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusBottomEnd="16dp"
-        app:boxBackgroundColor="#16161A"
+        app:boxBackgroundColor="@color/card_bg"
         app:startIconDrawable="@android:drawable/ic_menu_search"
-        app:startIconTint="#A0A0AB"
+        app:startIconTint="@color/text_secondary"
         android:layout_marginBottom="20dp"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
@@ -70,7 +70,7 @@
             android:id="@+id/etSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/text_primary"
             android:textSize="15sp"
             android:paddingVertical="14dp"
             android:maxLines="1"
@@ -89,57 +89,63 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:singleLine="true"
+            app:singleSelection="true"
             app:chipSpacingHorizontal="8dp">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chipAll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="All Items"
+                android:text="@string/cat_all"
                 style="@style/Widget.Material3.Chip.Filter"
                 app:chipCornerRadius="12dp"
-                app:chipBackgroundColor="#FF6D00"
+                app:chipBackgroundColor="@color/accent_orange"
                 android:textColor="#FFFFFF"
                 app:chipStrokeWidth="0dp"
                 android:checked="true"/>
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chipBaskets"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Baskets"
+                android:text="@string/cat_baskets"
                 style="@style/Widget.Material3.Chip.Filter"
                 app:chipCornerRadius="12dp"
-                app:chipBackgroundColor="#16161A"
-                android:textColor="#A0A0AB"
+                app:chipBackgroundColor="@color/card_bg"
+                android:textColor="@color/text_secondary"
                 app:chipStrokeWidth="0dp"/>
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chipPottery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pottery"
+                android:text="@string/cat_pottery"
                 style="@style/Widget.Material3.Chip.Filter"
                 app:chipCornerRadius="12dp"
-                app:chipBackgroundColor="#16161A"
-                android:textColor="#A0A0AB"
+                app:chipBackgroundColor="@color/card_bg"
+                android:textColor="@color/text_secondary"
                 app:chipStrokeWidth="0dp"/>
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chipJewelry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jewelry"
+                android:text="@string/cat_jewelry"
                 style="@style/Widget.Material3.Chip.Filter"
                 app:chipCornerRadius="12dp"
-                app:chipBackgroundColor="#16161A"
-                android:textColor="#A0A0AB"
+                app:chipBackgroundColor="@color/card_bg"
+                android:textColor="@color/text_secondary"
                 app:chipStrokeWidth="0dp"/>
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chipTextiles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Textiles"
+                android:text="@string/cat_textiles"
                 style="@style/Widget.Material3.Chip.Filter"
                 app:chipCornerRadius="12dp"
-                app:chipBackgroundColor="#16161A"
-                android:textColor="#A0A0AB"
+                app:chipBackgroundColor="@color/card_bg"
+                android:textColor="@color/text_secondary"
                 app:chipStrokeWidth="0dp"/>
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
@@ -157,6 +163,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="gone"
-        android:indeterminateTint="#FF6D00"/>
+        android:indeterminateTint="@color/accent_orange"/>
 
 </LinearLayout>

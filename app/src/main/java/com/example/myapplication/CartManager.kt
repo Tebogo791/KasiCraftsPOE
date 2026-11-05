@@ -7,9 +7,17 @@ object CartManager {
         cartItems.add(product)
     }
 
+    fun removeItemAt(position: Int) {
+        if (position in cartItems.indices) {
+            cartItems.removeAt(position)
+        }
+    }
+
     fun getItems(): List<Product> {
         return cartItems
     }
+
+    fun getItemCount(): Int = cartItems.size
 
     fun clearCart() {
         cartItems.clear()

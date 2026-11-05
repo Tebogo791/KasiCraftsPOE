@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Light Theme Colors (Default Day Mode) -->
+    <color name="app_bg">#F8F9FA</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="input_bg">#F1F3F5</color>
+    <color name="stroke_color">#E9ECEF</color>
+    <color name="text_primary">#1C1B1F</color>
+    <color name="text_secondary">#49454F</color>
+    <color name="accent_orange">#FF6D00</color>
 </resources>

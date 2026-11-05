@@ -1,19 +1,79 @@
 <resources>
     <string name="app_name">KasiCrafts</string>
     <string name="menu_home">Home</string>
+    <string name="menu_discover">Discover</string>
+    <string name="menu_sell">Sell</string>
+    <string name="menu_cart">Cart</string>
     <string name="menu_settings">Settings</string>
+    <string name="menu_profile">Profile</string>
+
     <string name="kasi_crafts_logo">Kasi Crafts Logo</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="btn_sign_in">Sign In</string>
+    <string name="btn_browse_guest">Browse as Guest</string>
     <string name="register_prompt">Don’t have an account? Register here.</string>
     <string name="welcome_back">Welcome Back</string>
     <string name="sign_in_subtitle">Sign in to explore authentic African crafts</string>
     <string name="continue_google">Continue with Google</string>
+
     <string name="create_account">Create Account</string>
     <string name="full_name">Full name</string>
     <string name="register_as">Register as</string>
     <string name="buyer">Buyer</string>
     <string name="seller">Seller</string>
     <string name="language_label">App language</string>
+
+    <!-- Home Screen -->
+    <string name="explore_crafts">Explore Crafts</string>
+    <string name="authentic_african_culture">Authentic African Culture</string>
+    <string name="search_crafts_hint">Search for unique crafts...</string>
+    <string name="cat_all">All Items</string>
+    <string name="cat_baskets">Baskets</string>
+    <string name="cat_pottery">Pottery</string>
+    <string name="cat_jewelry">Jewelry</string>
+    <string name="cat_textiles">Textiles</string>
+
+    <!-- Discover Screen -->
+    <string name="discover_gallery">Discover Gallery</string>
+    <string name="discover_subtitle">Immersive view of authentic cultural collections</string>
+    <string name="search_collections_hint">Search premium collections...</string>
+    <string name="filter_area_hint">Near Me: filter by town or area</string>
+
+    <!-- Sell Screen -->
+    <string name="list_your_craft">List Your Craft</string>
+    <string name="sell_subtitle">Publish your authentic creations to the cloud database marketplace</string>
+    <string name="hint_product_title">Product Title</string>
+    <string name="hint_product_price">Price (e.g. R 150)</string>
+    <string name="hint_seller_name">Artisan Seller Name</string>
+    <string name="hint_seller_area">Seller town or area (optional)</string>
+    <string name="hint_image_url">Image URL (optional)</string>
+    <string name="hint_category">Select Category</string>
+    <string name="btn_upload_firebase">Upload</string>
+
+    <!-- Cart Screen -->
+    <string name="escrow_active_title">Escrow Buyer Protection Active</string>
+    <string name="escrow_active_desc">Your funds are held securely until you verify delivery.</string>
+    <string name="your_basket">Your Basket</string>
+    <string name="summary_title">Summary</string>
+    <string name="subtotal_label">Subtotal</string>
+    <string name="delivery_label">Secure Delivery</string>
+    <string name="total_label">Total</string>
+    <string name="btn_checkout">Checkout with Escrow Protection</string>
+
+    <!-- Settings / Profile -->
+    <string name="loyalty_progress">Loyalty Progress</string>
+    <string name="push_notifications">Push notifications</string>
+    <string name="near_me_alerts">Near me alerts</string>
+    <string name="offline_mode">Offline mode</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_password">Change Password</string>
+    <string name="payment_methods">Payment Methods</string>
+    <string name="delivery_addresses">Delivery Addresses</string>
+    <string name="btn_save_preferences">Save Profile Preferences</string>
+    <string name="btn_sign_out">Sign Out</string>
+    <string name="edit_profile_title">Edit Display Name</string>
+    <string name="change_password_title">Change Account Password</string>
+    <string name="delivery_address_title">Saved Delivery Address</string>
 </resources>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212">
+    android:background="@color/app_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 app:cardCornerRadius="40dp"
-                app:cardBackgroundColor="#D84315"
+                app:cardBackgroundColor="@color/accent_orange"
                 app:cardElevation="0dp"
                 android:clickable="true"
                 android:focusable="true"
@@ -41,7 +41,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="TP"
+                        android:text="KC"
                         android:textColor="#FFFFFF"
                         android:textSize="28sp"
                         android:textStyle="bold" />
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="Thabo Petersen"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 app:cardCornerRadius="12dp"
-                app:cardBackgroundColor="#332211"
+                app:cardBackgroundColor="@color/card_bg"
                 app:cardElevation="0dp">
                 <TextView
                     android:layout_width="wrap_content"
@@ -91,7 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            app:cardBackgroundColor="#1E1E1E"
+            app:cardBackgroundColor="@color/card_bg"
             app:cardCornerRadius="12dp">
 
             <LinearLayout
@@ -103,8 +103,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Loyalty Progress"
-                    android:textColor="#FFFFFF"
+                    android:text="@string/loyalty_progress"
+                    android:textColor="@color/text_primary"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="8dp"/>
@@ -115,7 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:progress="45"
-                    android:progressTint="#D84315"
+                    android:progressTint="@color/accent_orange"
                     android:layout_marginBottom="4dp"/>
 
                 <TextView
@@ -123,19 +123,30 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/tvLoyaltyPoints"
                     android:text="Loading loyalty points..."
-                    android:textColor="#888888"
+                    android:textColor="@color/text_secondary"
                     android:textSize="12sp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/language_label" android:textColor="#FFFFFF" android:layout_marginBottom="8dp" />
-        <Spinner android:id="@+id/spinnerLanguage" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginBottom="20dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/language_label"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="8dp" />
+
+        <Spinner
+            android:id="@+id/spinnerLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp" />
+
         <!-- Toggle Switches Preferences Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            app:cardBackgroundColor="#1E1E1E"
+            app:cardBackgroundColor="@color/card_bg"
             app:cardCornerRadius="12dp">
 
             <LinearLayout
@@ -149,30 +160,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:paddingHorizontal="8dp"
-                    android:text="Push notifications"
-                    android:textColor="#FFFFFF"
-                    android:thumbTint="#D84315"
-                    android:trackTint="#88D84315"/>
+                    android:text="@string/push_notifications"
+                    android:textColor="@color/text_primary"
+                    android:thumbTint="@color/accent_orange"
+                    android:trackTint="#88FF6D00"/>
 
                 <Switch
                     android:id="@+id/switchNearMe"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:paddingHorizontal="8dp"
-                    android:text="Near me alerts"
-                    android:textColor="#FFFFFF"
-                    android:thumbTint="#D84315"
-                    android:trackTint="#88D84315"/>
+                    android:text="@string/near_me_alerts"
+                    android:textColor="@color/text_primary"
+                    android:thumbTint="@color/accent_orange"
+                    android:trackTint="#88FF6D00"/>
 
                 <Switch
                     android:id="@+id/switchOfflineMode"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:paddingHorizontal="8dp"
-                    android:text="Offline mode"
-                    android:textColor="#FFFFFF"
-                    android:thumbTint="#D84315"
-                    android:trackTint="#88D84315"/>
+                    android:text="@string/offline_mode"
+                    android:textColor="@color/text_primary"
+                    android:thumbTint="@color/accent_orange"
+                    android:trackTint="#88FF6D00"/>
+
+                <Switch
+                    android:id="@+id/switchDarkMode"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:paddingHorizontal="8dp"
+                    android:text="@string/dark_mode"
+                    android:textColor="@color/text_primary"
+                    android:thumbTint="@color/accent_orange"
+                    android:trackTint="#88FF6D00"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -181,7 +202,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            app:cardBackgroundColor="#1E1E1E"
+            app:cardBackgroundColor="@color/card_bg"
             app:cardCornerRadius="12dp">
 
             <LinearLayout
@@ -205,13 +226,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Edit Profile"
-                        android:textColor="#FFFFFF"
+                        android:text="@string/edit_profile"
+                        android:textColor="@color/text_primary"
                         android:textSize="14sp"/>
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_chevron_right"
+                        app:tint="@color/text_secondary"
                         android:contentDescription="Go"/>
                 </LinearLayout>
 
@@ -230,13 +252,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Change Password"
-                        android:textColor="#FFFFFF"
+                        android:text="@string/change_password"
+                        android:textColor="@color/text_primary"
                         android:textSize="14sp"/>
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_chevron_right"
+                        app:tint="@color/text_secondary"
                         android:contentDescription="Go"/>
                 </LinearLayout>
 
@@ -255,13 +278,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Payment Methods"
-                        android:textColor="#FFFFFF"
+                        android:text="@string/payment_methods"
+                        android:textColor="@color/text_primary"
                         android:textSize="14sp"/>
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_chevron_right"
+                        app:tint="@color/text_secondary"
                         android:contentDescription="Go"/>
                 </LinearLayout>
 
@@ -280,13 +304,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Delivery Addresses"
-                        android:textColor="#FFFFFF"
+                        android:text="@string/delivery_addresses"
+                        android:textColor="@color/text_primary"
                         android:textSize="14sp"/>
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_chevron_right"
+                        app:tint="@color/text_secondary"
                         android:contentDescription="Go"/>
                 </LinearLayout>
             </LinearLayout>
@@ -297,8 +322,8 @@
             android:id="@+id/btnSaveSettings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save Profile Preferences"
-            android:backgroundTint="#D84315"
+            android:text="@string/btn_save_preferences"
+            android:backgroundTint="@color/accent_orange"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             android:layout_marginTop="8dp"/>
@@ -308,7 +333,7 @@
             android:id="@+id/btnSignOut"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign Out"
+            android:text="@string/btn_sign_out"
             android:backgroundTint="#2C2C2C"
             android:textColor="#FF4444"
             android:textStyle="bold"

@@ -10,17 +10,9 @@ import com.google.firebase.firestore.DocumentReference
 object FirebaseDatabaseManager {
     private const val TAG = "FirebaseDBManager"
 
-    // Reference to Realtime Database
     private val realtimeDb by lazy { FirebaseDatabase.getInstance() }
-    
-    // Reference to Cloud Firestore
     private val firestoreDb by lazy { FirebaseFirestore.getInstance() }
 
-    /**
-     * Legacy login logging deliberately disabled.
-     * Passwords and password hashes must never be written to client-accessible databases.
-     * Firebase Authentication handles credentials.
-     */
     @Deprecated("Do not store credentials or password hashes")
     fun saveUserLoginLog(email: String, passwordHash: String) {
         Log.w(TAG, "Legacy login logging disabled")
@@ -33,7 +25,9 @@ object FirebaseDatabaseManager {
         title: String,
         price: String,
         seller: String,
-        area: String = ""
+        area: String = "",
+        imageUrl: String = "",
+        category: String = "Baskets"
     ): Task<DocumentReference> {
         val user = FirebaseAuth.getInstance().currentUser
             ?: throw IllegalStateException("Sign in to list a craft")
@@ -42,6 +36,8 @@ object FirebaseDatabaseManager {
             "price" to price,
             "sellerName" to seller,
             "sellerArea" to area,
+            "imageUrl" to imageUrl,
+            "category" to category,
             "sellerUid" to user.uid,
             "sellerEmailVerified" to user.isEmailVerified,
             "timestamp" to System.currentTimeMillis()
