@@ -1,15 +1,61 @@
+# Android Studio
 *.iml
-.gradle
+.gradle/
 /local.properties
-/.idea/caches
-/.idea/libraries
+/.idea/caches/
+/.idea/libraries/
 /.idea/modules.xml
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
+.idea/deploymentTargetSelector.xml
+
+# Operating system
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+Thumbs.db
+
+# Android build files
+/build/
+/app/build/
+**/build/
+/captures/
+.externalNativeBuild/
+.cxx/
 local.properties
+
+# Kotlin generated files
+.kotlin/
+**/.kotlin/
+
+# Node.js and Firebase dependencies
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Firebase generated files
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+*.log
+
+# Android release files
+/app/release/
+*.apk
+*.aab
+
+# Sensitive files
+.env
+.env.*
+*.jks
+*.keystore
+*.pem
+*.key
+service-account*.json
+*serviceAccountKey*.json
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
