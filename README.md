@@ -1,62 +1,208 @@
 # KasiCrafts — South African Artisan Marketplace
 
-**Course:** OPSC6312 — Open Source Coding (PoE Submission)  
-**Technology Stack:** Kotlin, Jetpack Compose / Android Views, Cloud Firestore, Firebase Authentication, Firebase Cloud Messaging (FCM), Retrofit REST API, Material Design 3.  
+**Course:** OPSC6312 — Open Source Coding (Part 3 POE Submission)
+
+**Development Language:** Kotlin
+
+**UI Technology:** XML Layouts (Android Views)
+
+**Technology Stack:** Kotlin, XML, Material Design, Firebase Authentication, Cloud Firestore, Firebase Cloud Messaging (FCM), Retrofit REST API, Gradle and GitHub Actions.
+
+## Project Links
+
+- **GitHub Repository:** https://github.com/Tebogo791/KasiCraftsPOE
+- **YouTube Demonstration:** https://youtu.be/UwONyTmksko
+- **Branch:** main
 
 ---
 
-## 📌 Project Overview
+## 1. Project Overview
 
-**KasiCrafts** is a mobile marketplace application built using native Android (Kotlin) designed to connect South African artisans and small business crafters with local and international buyers. Users can discover authentic handmade products (baskets, pottery, jewelry, textiles), search by location, register as buyers or sellers, upload new listings directly to Cloud Firestore, add items to a shopping cart, and complete orders with escrow buyer protection.
+**KasiCrafts** is a native Android marketplace application designed to connect South African artisans and small business owners with local and international buyers.
 
----
+The application allows users to discover handmade products such as baskets, pottery, jewelry and textiles, search for products, manage shopping carts, and place orders.
 
-## ✨ Features & PoE Marking Rubric Compliance
+KasiCrafts aims to support local entrepreneurship by giving artisans a digital platform to showcase their products.
 
-| Feature / Criteria | Implementation Details | Rubric Marks |
-| :--- | :--- | :--- |
-| **App Execution** | App compiles cleanly, runs without crashes, and maintains robust state lifecycle handling. | **5 / 5 Marks** |
-| **SSO Login** | Google Sign-In implemented using Credential Manager API (`GetGoogleIdOption`) & `GoogleAuthProvider`. | **10 / 10 Marks** |
-| **Offline Mode with Sync** | Offline caching powered by Cloud Firestore persistent disk cache (`MetadataChanges.INCLUDE`) & local asset fallbacks. | **10 / 10 Marks** |
-| **Real-time Push Notifications** | Integrated Firebase Cloud Messaging (`KasiMessagingService`) with runtime permission management (`POST_NOTIFICATIONS`). | **10 / 10 Marks** |
-| **Multi-Language Support** | Full internationalization supporting **English**, **isiZulu**, and **Afrikaans** with dynamic runtime language switching in Settings. | **10 / 10 Marks** |
-| **User Defined Feature 4: Marketplace Search & Filtering** | Instant keyword search and multi-category filtering (*Baskets*, *Pottery*, *Jewelry*, *Textiles*) and town/area filtering. | **10 / 10 Marks** |
-| **User Defined Feature 5: Basket & Escrow Checkout** | Full shopping cart state management, delivery fee calculation (R 65.00), item deletion, address input, and order confirmation. | **10 / 10 Marks** |
-| **Play Store Publication Preparation** | Comprehensive store listing documentation, metadata, graphic asset guidelines, and release build configuration (`PLAY_STORE_PUBLICATION.md`). | **5 / 5 Marks** |
-| **AI-Use Writeup & Citation** | Transparent documentation detailing AI tool usage, prompt engineering, and academic citations (`AI_USE_WRITEUP.md`). | **5 / 5 Marks** |
-| **UI / UX Design** | Modern dark theme (`#0A0A0C`), orange accent highlights (`#FF6D00`), Material 3 card layouts, and responsive design. | **10 / 10 Marks** |
-| **GitHub & Automated Testing** | Clean repository structure, detailed documentation, and 9 passing JUnit local unit tests. | **10 / 10 Marks** |
-| **Demonstration Video** | Comprehensive video recording checklist showing all key functionalities on a mobile device/emulator. | **5 / 5 Marks** |
+The application is developed using **Kotlin for functionality and XML layouts for the user interface**, following the OPSC6312 Part 3 assessment requirements.
 
----
+## 2. Application Features
 
-## 🧪 Running Automated Unit Tests
+| Feature | Implementation |
+|---|---|
+| User Authentication | Email/password authentication and Google Sign-In using Firebase Authentication |
+| Offline Mode | Firestore local persistence and synchronization when internet connectivity returns |
+| Push Notifications | Firebase Cloud Messaging with Android notification permission handling |
+| Multilingual Support | English, isiZulu and Afrikaans |
+| Marketplace Search | Product keyword, category and location filtering |
+| Shopping Cart | Add products, remove products and calculate totals |
+| Checkout | Delivery address entry, delivery fee calculation and order confirmation |
+| Database | Cloud Firestore NoSQL database |
+| REST API | Retrofit-based API integration; remote hosting must be verified |
+| User Interface | Kotlin and XML layouts using Android Views |
+| Testing | Local JUnit tests and GitHub Actions workflow |
 
-Automated local unit tests are located in `app/src/test/java/com/example/myapplication/`.
+### Feature 4: Marketplace Search and Filtering
 
-To run tests via Gradle CLI:
+Users can search for products by keyword, filter products by category, and discover products based on seller location.
+
+Categories include baskets, pottery, jewelry and textiles.
+
+### Feature 5: Shopping Cart and Checkout
+
+Users can add products to their shopping carts, remove items, calculate subtotals, enter delivery information and confirm orders.
+
+A delivery fee of R65.00 is included in the checkout calculations.
+
+**Assessment note:** Features 4 and 5 must be additional features not previously submitted as the three features for Part 2. Their eligibility must be checked against the Part 2 submission.
+
+## 3. Supported Languages
+
+KasiCrafts supports three South African languages:
+
+1. English (`en`)
+2. isiZulu (`zu`)
+3. Afrikaans (`af`)
+
+Users can select their preferred language through the application's Settings screen.
+
+The multilingual implementation must be demonstrated across the assessed screens, including navigation, authentication, shopping and settings.
+
+## 4. Database and REST API
+
+### Firebase Cloud Firestore
+
+Cloud Firestore provides NoSQL storage for application data, including product listings, users and orders.
+
+Firestore's offline persistence supports locally cached data and synchronization when connectivity becomes available.
+
+### REST API
+
+The application uses Retrofit for REST API integration.
+
+Any student-created REST API must be deployed to a remotely accessible hosting environment. A localhost-only API is not acceptable for the final assessment.
+
+**Verification required:** Confirm the hosted API endpoint and demonstrate successful requests from the Android application without a locally running server.
+
+## 5. Automated Testing
+
+Automated tests are located in:
+
+`app/src/test/java/com/example/myapplication/`
+
+Existing test classes include:
+
+- `LoginValidationTest`
+- `CartManagerTest`
+- `ProductFilterTest`
+
+The final submission must demonstrate at least five documented test cases, including valid and invalid input scenarios.
+
+Tests should contain comments explaining the purpose of each test.
+
+### Run Unit Tests
+
 ```bash
 ./gradlew app:testDebugUnitTest
 ```
-Or run directly inside Android Studio via the Test Runner.
 
-### Unit Tests Included:
-1. `LoginValidationTest`: Validates email syntax regex pattern checking.
-2. `CartManagerTest`: Verifies adding items, subtotal calculations, and item deletion.
-3. `ProductFilterTest`: Tests category matching, case-insensitive keyword search, and seller area filtering logic.
+On Windows:
+
+```powershell
+.\gradlew.bat app:testDebugUnitTest
+```
+
+### Continuous Integration
+
+The GitHub Actions workflow must execute successfully and demonstrate automated project validation or testing.
+
+Workflow files are located in:
+
+`.github/workflows/`
+
+## 6. GitHub Version Control
+
+**Repository:** https://github.com/Tebogo791/KasiCraftsPOE
+
+**Main Branch:** `main`
+
+The project uses Git and GitHub for version control.
+
+The assessment guidance recommends at least 10 meaningful commits distributed across at least three days, demonstrating progressive development rather than one large upload.
+
+Commit history and workflow execution can be inspected through the GitHub repository.
+
+## 7. Build and Setup Instructions
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Tebogo791/KasiCraftsPOE.git
+```
+
+2. Open the project in Android Studio.
+3. Allow Gradle to synchronize.
+4. Ensure the Firebase configuration file `app/google-services.json` is configured for the correct Firebase project.
+5. Select an Android device or emulator.
+6. Build and run the application.
+
+For final assessment, the application must also be demonstrated on a physical Android device.
+
+## 8. User Interface Design
+
+KasiCrafts uses Android XML layouts with Kotlin-based application logic.
+
+The interface includes:
+
+- Dark theme with orange accent colors
+- Product cards and category navigation
+- Authentication and registration screens
+- Product search and filtering
+- Shopping cart and checkout screens
+- Settings and language selection
+
+**Primary background:** `#0A0A0C`
+
+**Accent color:** `#FF6D00`
+
+## 9. Google Play Store Preparation
+
+Publication preparation documentation is available in:
+
+`PLAY_STORE_PUBLICATION.md`
+
+This includes store listing information, graphic asset guidance and release preparation.
+
+The document describes publication preparation and does not by itself establish that the application has been published.
+
+## 10. AI Usage Declaration
+
+AI-assisted development and documentation are described in:
+
+`AI_USE_WRITEUP.md`
+
+This document records AI assistance, development activities and relevant academic citations.
+
+## 11. Demonstration Video
+
+**Watch the KasiCrafts Android Application Demonstration:**
+
+https://youtu.be/UwONyTmksko
+
+The demonstration video is intended to show the actual application running, including its core features and functionality.
+
+The final demonstration should provide evidence of authentication, offline behavior, notifications, multilingual support, additional features, and successful operation on an Android device.
+
+The video must demonstrate the application itself, rather than presentation slides or AI-generated demonstrations.
 
 ---
 
-## 🌐 Supported Languages
-Users can change the application language anytime in **Settings**:
-- **English (`en`)**
-- **isiZulu (`zu`)**
-- **Afrikaans (`af`)**
+**Project:** KasiCrafts — South African Artisan Marketplace
 
----
+**Module:** OPSC6312 — Open Source Coding
 
-## 📱 Build & Setup Instructions
-1. Clone the repository: `git clone https://github.com/Tebogo791/KasiCrafts.git`
-2. Open the project in **Android Studio**.
-3. Ensure `google-services.json` is present in the `app/` folder.
-4. Build and run on an Android device or emulator (API 26+).
+**Submission:** Part 3 — Final Portfolio of Evidence
+
+**GitHub:** https://github.com/Tebogo791/KasiCraftsPOE
+
+**YouTube:** https://youtu.be/UwONyTmksko
